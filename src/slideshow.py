@@ -3,7 +3,7 @@ create a Tkinter image repeating slide show
 tested with Python27/33  by  vegaseat  03dec2013
 '''
 
-IMAGES= "/home/howie/Pictures/*.*"
+IMAGES= "images/*.png"
 import glob
 from itertools import cycle
 import Tkinter as tk
