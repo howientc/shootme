@@ -4,7 +4,10 @@ tested with Python27/33  by  vegaseat  03dec2013
 '''
 
 IMAGES= "images/*.png"
+SOUND = "audio/g.wav"
+
 import glob
+import pygame
 from itertools import cycle
 import Tkinter as tk
 class App(tk.Tk):
@@ -23,19 +26,31 @@ class App(tk.Tk):
                               for image in self.images)
         self.picture_display = tk.Label(self)
         self.picture_display.pack()
+        
+        pygame.init()
+        pygame.mixer.init()
+        pygame.mixer.music.load(SOUND);
+        
     def show_slides(self):
         '''cycle through the images and show them'''
         # next works with Python26 or higher
         img_object, img_name = next(self.pictures)
+        self.gun_sound()
         self.picture_display.config(image=img_object)
         # shows the image filename, but could be expanded
         # to show an associated description of the image
         self.title(img_name)
         self.after(self.delay, self.show_slides)
+        
     def run(self):
         self.mainloop()
+        
+    
+    def gun_sound(self):
+        pygame.mixer.music.play()
+            
 # set milliseconds time between slides
-delay = 3500
+delay = 5000
 # get a series of gif images you have in the working folder
 # or use full path, or set directory to where the images are
 image_files = [
