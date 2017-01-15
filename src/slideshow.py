@@ -22,7 +22,7 @@ class App(tk.Tk):
         w, h = self.winfo_screenwidth(), self.winfo_screenheight()
         self.overrideredirect(1)
         self.geometry("%dx%d+0+0" % (w, h))
-
+        self.configure(background='black')
         
         self.images = glob.glob(IMAGES);
         
