@@ -5,20 +5,38 @@ tested with Python27/33  by  vegaseat  03dec2013
 
 IMAGES= "images/*.png"
 SOUND = "audio/g.wav"
-
+import CHIP_IO.GPIO as GPIO
 import glob
 import pygame
 from itertools import cycle
 import Tkinter as tk
 class App(tk.Tk):
+    
+    
+    root = Tk()
+
+# make it cover the entire screen
+    w, h = root.winfo_screenwidth(), root.winfo_screenheight()
+    root.overrideredirect(1)
+    root.geometry("%dx%d+0+0" % (w, h))
+
+
+
     '''Tk window/label adjusts to size of image'''
     def __init__(self,  x, y, delay):
-        self.images = glob.glob(IMAGES);
 
         # the root will be self
         tk.Tk.__init__(self)
+
+        w, h = self.winfo_screenwidth(), self.winfo_screenheight()
+        self.overrideredirect(1)
+        self.geometry("%dx%d+0+0" % (w, h))
+
+        
+        self.images = glob.glob(IMAGES);
+        
         # set x, y position only
-        self.geometry('+{}+{}'.format(x, y))
+#         self.geometry('+{}+{}'.format(x, y))
         self.delay = delay
         # allows repeat cycling through the pictures
         # store as (img_object, img_name) tuple
