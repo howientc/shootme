@@ -3,35 +3,22 @@ body {
     background:black;
 }
 
-progress {
-    height:5px;
-}
-.success {
-    color: green;
-}
 
-.fail {
+.shoot {
+	position:absolute;
     color: red;
-}
-
-.active {
-    color: white;
-}
-
-.passive {
-    color: yellow;
-}
-
-.prompt {
-    color: orange;
-}
-
-.disconnected {
-    color: gray;
-}
-
-.paused {
-    color: Gold;
+    width:90%;
+    height:50%;
+	background: blue;
+	cursor:pointer;
 }
 
 
+.delay {
+	position:absolute;
+    width:90%;
+    height:50%;
+    top:50%
+	background: white;
+	
+}

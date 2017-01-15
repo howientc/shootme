@@ -5,7 +5,12 @@ tested with Python27/33  by  vegaseat  03dec2013
 
 IMAGES= "images/*.png"
 SOUND = "audio/g.wav"
-import CHIP_IO.GPIO as GPIO
+
+try:
+    import CHIP_IO.GPIO as GPIO
+except:
+    pass
+
 import glob
 import pygame
 from itertools import cycle
@@ -51,6 +56,9 @@ class App(tk.Tk):
         self.title(img_name)
         self.after(self.delay, self.show_slides)
         
+    def check_for_click(self):
+        print "checking for click"
+            
     def run(self):
         self.mainloop()
         
@@ -74,4 +82,5 @@ x = 100
 y = 50
 app = App( x, y, delay)
 app.show_slides()
+app.after(1000,lambda:app.check_for_click)
 app.run()

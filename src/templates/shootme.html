@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>#ShootMe</title>
+<meta charset="UTF-8">
+    
+<script src="static/js/jquery-3.1.1.min.js"></script>
+<link rel="stylesheet" type="text/css" href="static/css/style.css">
+</head>
+<body>
+    
+<!-- <script type="text/javascript" src="js/socket.io.min.js"></script> -->
+
+<!--  <input id="shoot" type="button" value="click me"></input>  -->
+<div class="shoot">click me</div>
+<div>
+Delay: <input class="delay" type="number" min="1" max="500" value="{{ delay }}"></input>
+</div>
+
+<script>
+$('.shoot').on('click', function(e) {
+	$.post( "/shoot", function( data ) {
+	});
+});
+
+$('.delay').on('change', function(e) {
+	
+	 $.ajax
+	    ({
+	        type: "POST",
+	        //the url where you want to sent the userName and password to
+	        url: '/delay',
+	        dataType: 'json',
+	        async: true,
+	        //json object to sent to the authentication url
+	        data: JSON.stringify({delay:e.target.value}),
+	        success: function () {
+	        	console.log("yay")
+	        },
+	        failure: function() {
+	        	console.log("boo");
+	        }
+	    });
+	});
+
+</script>
+</body>
+</html>
+
+
