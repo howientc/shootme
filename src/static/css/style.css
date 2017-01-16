@@ -16,9 +16,13 @@ body {
 
 .delay {
 	position:absolute;
+    height:90%;
     width:90%;
-    height:50%;
-    top:50%
+    top:50%;
 	background: white;
-	
+}
+
+.delayInput {
+	height:50%;
+    font-size:14vw;
 }
