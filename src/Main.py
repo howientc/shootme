@@ -57,9 +57,10 @@ if __name__ == '__main__':
     try:
         p = Process(target=main,args=(queue,delay))
         p.start()
-        app.run()
+        app.run(host='0.0.0.0', port=8080)
         p.join()
     except:
         p.terminate()
+        raise
 #         shutdown_server()
 
