@@ -14,6 +14,7 @@ pygtk.require('2.0')
 import gtk
 import glib
 import pygame
+import subprocess
 
 SOUND = "audio/g.wav"
 IMAGES= "images/*.png"
@@ -188,7 +189,18 @@ class SlideShow:
 
         self.image = ResizableImage( True, True, gtk.gdk.INTERP_BILINEAR)
         self.image.show()
-        self.window.add(self.image)
+        
+        ip =  subprocess.Popen("hostname -I", shell=True, stdout=subprocess.PIPE).stdout.read()
+#         label = gtk.Label("<b>' + ip + 'abcdef</b>")
+        label = gtk.Label()
+        label.set_use_markup(True)
+        
+        label.set_markup('<span size="78000">' + ip + '</span>')
+        self.label = label
+#         label = gtk.Label("192.168.1.1:8080")
+        self.window.add(label);
+        
+#         self.window.add(self.image)
 
         self.load_file_list()
 
@@ -250,6 +262,13 @@ class SlideShow:
         """ Skip to another picture.
 
         If this picture is last, go to the first one. """
+        
+        if self.label:
+            self.window.remove(self.label)
+            self.label = None
+            self.window.add(self.image)
+
+            
         self.index += 1
         if self.index >= len(self.files):
             self.index = 0

@@ -8,7 +8,7 @@ from flask import Flask, render_template, request, jsonify, send_from_directory
 from multiprocessing import Process, Queue
 
 from GtkSlide import SlideShow
-SECONDS_BETWEEN_PICTURES = 3
+SECONDS_BETWEEN_PICTURES = 45
 delay = SECONDS_BETWEEN_PICTURES
 
 app = Flask(__name__,static_folder='static')
