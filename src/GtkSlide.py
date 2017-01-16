@@ -253,7 +253,8 @@ class SlideShow:
     def set_tick_timeout(self):
         if self.timer:
             glib.source_remove(self.timer)
-        self.timer = glib.timeout_add_seconds(self.delay, self.on_tick)
+        if self.delay > 0:
+            self.timer = glib.timeout_add_seconds(self.delay, self.on_tick)
 
     def gun_sound(self):
         pygame.mixer.music.play()
